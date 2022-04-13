@@ -1,0 +1,12 @@
+{
+  "extends": "@antfu",
+  "ignorePatterns": [
+    "**/*.yaml",
+    "**/translations/*.json"
+  ],
+  "rules": {
+    "space-before-function-paren": ["error", "always"],
+    "curly": ["error", "all"],
+    "@typescript-eslint/brace-style": ["error", "1tbs"]
+  }
+}
