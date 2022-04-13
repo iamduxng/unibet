@@ -10,6 +10,11 @@ body {
 	margin: 0;
 	padding: 0;
 }
+#container {
+	background-image: radial-gradient(#2f8e2c,#2e7423);
+	background-color: #2e7423;
+	text-align: center;
+}
 header {
 	width: 900px;
 	text-align: left;
