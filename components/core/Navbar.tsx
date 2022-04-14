@@ -1,7 +1,7 @@
 import tw from 'twin.macro'
 
 const styles = {
-  navbar: tw`bg-gray-1000`
+  navbar: tw`bg-gray-1000 text-white`
 }
 
 const Navbar = () => {

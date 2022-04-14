@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Logo from '@/components/core/Logo'
+import { Logo } from '@/components/core'
 
 const Header = () => {
   return (

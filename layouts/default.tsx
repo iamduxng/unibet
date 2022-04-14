@@ -1,7 +1,5 @@
 import tw from 'twin.macro'
-import Header from '@/components/core/Header'
-import Navbar from '@/components/core/Navbar'
-import Footer from '@/components/core/Footer'
+import { Header, Navbar, Footer } from '@/components/core'
 
 const styles = {
   main: tw`flex flex-col w-full h-full`,

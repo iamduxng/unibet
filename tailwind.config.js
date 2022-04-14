@@ -7,10 +7,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#333',
         gray: {
           1000: '#222'
+        },
+        green: {
+          primary: '#2e7423'
         }
+      },
+      backgroundImage: {
+        'gradient-green-primary': 'radial-gradient(#2f8e2c, #2e7423)'
       }
     },
   },
