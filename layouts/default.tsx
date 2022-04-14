@@ -3,7 +3,7 @@ import { Header, Navbar, Footer } from '@/components/core'
 
 const styles = {
   main: tw`flex flex-col w-full h-full`,
-  container: tw`flex-1`
+  container: tw`flex-1 flex items-center`
 }
 
 interface LayoutProps {

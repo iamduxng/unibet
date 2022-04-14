@@ -1,14 +1,26 @@
-import '../styles/globals.css'
-import { AppContext, AppInitialProps, AppLayoutProps } from 'next/app';
-import type { NextComponentType } from 'next';
-import { ReactNode } from 'react';
+import { ReactNode, ReactElement, useState } from 'react';
+import type { NextPage } from 'next'
+import type { AppProps } from 'next/app'
+import { Hydrate, QueryClient, QueryClientProvider } from 'react-query'
+import '@/styles/globals.css'
 
-const MyApp: NextComponentType<AppContext, AppInitialProps, AppLayoutProps> = ({
-  Component,
-  pageProps,
-}: AppLayoutProps) => {
+type NextPageWithLayout = NextPage & {
+  getLayout?: (page: ReactElement) => ReactNode
+}
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout
+}
+
+export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+  const [queryClient] = useState(() => new QueryClient())
+
   const getLayout = Component.getLayout || ((page: ReactNode) => page);
-  return getLayout(<Component {...pageProps} />);
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Hydrate state={pageProps.dehydratedState}>
+        { getLayout(<Component {...pageProps} />) }
+      </Hydrate>
+    </QueryClientProvider>
+  )
 };
-
-export default MyApp

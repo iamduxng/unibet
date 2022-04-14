@@ -27,8 +27,11 @@
       "@/layouts/*": [
         "layouts/*"
       ],
-      "~/styles/*": [
+      "@/styles/*": [
         "styles/*"
+      ],
+      "@/hooks/*": [
+        "hooks/*"
       ]
     }
   },
