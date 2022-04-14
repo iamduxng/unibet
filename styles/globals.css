@@ -2,13 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-	background: #333;
+html,
+body,
+#__next {
+	@apply w-full h-full bg-primary;
 	font-family: 'RobotoRegular','Roboto','Droid Sans','Helvetica Neue','Segoe UI','Segoe','Open Sans','Helvetica','Arial',sans serif;
-	font-size: 14px;
-	line-height: 20px;
-	margin: 0;
-	padding: 0;
+}
+.container {
+	@apply mx-auto p-4;
 }
 #container {
 	background-image: radial-gradient(#2f8e2c,#2e7423);

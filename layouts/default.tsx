@@ -3,24 +3,25 @@ import Header from '@/components/core/Header'
 import Navbar from '@/components/core/Navbar'
 import Footer from '@/components/core/Footer'
 
+const styles = {
+  main: tw`flex flex-col w-full h-full`,
+  container: tw`flex-1`
+}
+
 interface LayoutProps {
   children: React.ReactNode;
 }
 
-const styles = {
-  container: tw`container mx-auto`,
-}
-
 const LayoutDefault = ({ children }: LayoutProps) => {
   return (
-    <>
+    <main css={styles.main}>
       <Header />
       <Navbar />
-      <div id="container" css={styles.container}>
+      <div className="container" css={styles.container}>
         {children}
       </div>
       <Footer />
-    </>
+    </main>
   )
 }
 

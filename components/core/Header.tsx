@@ -10,7 +10,9 @@ const Header = () => {
         <title>Unibet Front-end test - Live matches</title>
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto" />
       </Head>
-      <Logo />
+      <div className="container">
+        <Logo />
+      </div>
     </>
   )
 }
