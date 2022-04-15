@@ -1,4 +1,5 @@
 import tw from 'twin.macro'
+import fetchMatches from '@/services/queries/matches'
 import LayoutDefault from '@/layouts/default'
 import { Headline, Card } from '@/components/common'
 import MatchSlider from '@/components/match/MatchSlider'
@@ -6,11 +7,15 @@ import MatchSlider from '@/components/match/MatchSlider'
 const styles = {
   cardBody: tw`grid gap-4 divide-y divide-gray-400`,
   cardBodyDesktop: tw`md:grid-rows-1 md:grid-cols-3 md:divide-x md:divide-y-0`,
-  liveMatch: tw`bg-gray-1000 overflow-hidden row-auto md:col-span-2`,
+  liveMatch: tw`flex flex-col justify-center bg-gray-1000 overflow-hidden row-auto md:col-span-2`,
   description: tw`pt-4 md:pl-4 md:pt-0`,
 }
 
-const Home = () => {
+interface HomeProps {
+  matches: Array<any>
+}
+
+const Home = ({ matches }: HomeProps) => {
   return (
     <Card>
       <div>
@@ -23,7 +28,7 @@ const Home = () => {
       </div>
       <div css={[styles.cardBody, styles.cardBodyDesktop]}>
         <div css={styles.liveMatch}>
-          <MatchSlider />
+          <MatchSlider matches={matches}/>
         </div>
         <div css={styles.description}>
           <Headline variant='h2' css={tw`mb-2`}>
@@ -47,6 +52,12 @@ Home.getLayout = (page: any) => {
       { page }
     </LayoutDefault>
   )
+}
+
+// This function runs only on the server side
+export const getStaticProps = async () => {
+  const matches = await fetchMatches()
+  return { props: { matches } }
 }
 
 export default Home

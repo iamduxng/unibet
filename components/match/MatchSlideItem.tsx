@@ -1,5 +1,7 @@
 import tw from 'twin.macro'
+import { SPORTS } from '@/services/utils/constants'
 import { Headline, Icon, ALink, Button } from '@/components/common'
+import dayjs from '@/plugins/dayjs'
 
 const styles = {
   slide: tw`p-6 flex flex-col items-center justify-center`,
@@ -12,22 +14,44 @@ interface MatchProps {
   match: any,
 }
 
-const MatchSlideItem = (props: MatchProps) => {
+const MatchSlideItem = ({ match }: MatchProps) => {
+  const { event, liveData } = match
+  const teamPlaying = event.name
+  const currentScore = `${liveData.score.home} - ${liveData.score.away}`
+  const eventID = event.id
+  const getStartTime = () => {
+    const date = dayjs(event.start)
+    if (date.isToday()) {
+      return `Today, ${date.format('HH:mm')}`
+    } else {
+      return date.format('YYYY-MM-DD, HH:mm')
+    }
+  }
+
+  const getSportIcon = () => {
+    const sport = (event.sport || '').toLowerCase()
+    if (SPORTS.includes(sport)) {
+      return `ic-${sport}`
+    } else {
+      return `ic-default`
+    }
+  }
+
   return (
     <div css={styles.slide}>
       <Headline variant='h1' css={styles.slideCurrentScore}>
-        15 - 0
+        {currentScore}
       </Headline>
       <Headline variant='h2' css={styles.slideTeamsPlaying}>
         <div css={tw`mr-2`}>
-          <Icon name='ic-default' />
+          <Icon name={getSportIcon()} />
         </div>
-        <span>Bedene, Ajuax</span>
+        <span>{teamPlaying}</span>
       </Headline>
       <div css={styles.slideTime}>
-        Today, 14:14
+        {getStartTime()}
       </div>
-      <ALink href={`https://www.unibet.com/betting#/event/live/${'1234'}`}>
+      <ALink href={`https://www.unibet.com/betting#/event/live/${eventID}`} target="_blank">
         <Button variant='primary'>Place a bet</Button>
       </ALink>
     </div>

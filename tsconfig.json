@@ -8,10 +8,11 @@
     ],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": true,
+    "strict": false,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
@@ -32,6 +33,12 @@
       ],
       "@/hooks/*": [
         "hooks/*"
+      ],
+      "@/services/*": [
+        "services/*"
+      ],
+      "@/plugins/*": [
+        "plugins/*"
       ]
     }
   },
