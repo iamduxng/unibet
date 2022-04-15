@@ -4,11 +4,7 @@ import MatchSlideItem from '@/components/match/MatchSlideItem'
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 
-interface MatchSliderProps {
-  matches: Array<any>
-}
-
-const MatchSlider = ({ matches }: MatchSliderProps) => {
+const MatchSlider = (props: any) => {
   const carouselSettings = {
     dots: false,
     arrows: false,
@@ -24,7 +20,7 @@ const MatchSlider = ({ matches }: MatchSliderProps) => {
     <>
       <Carousel settings={carouselSettings}>
         {
-          matches.liveEvents.map((match: any, idx: number) => (
+          props.matches.liveEvents.map((match: any, idx: number) => (
             <MatchSlideItem
               key={`match-slide-${idx}`}
               match={match}

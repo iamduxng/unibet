@@ -28,7 +28,15 @@ const Home = ({ matches }: HomeProps) => {
       </div>
       <div css={[styles.cardBody, styles.cardBodyDesktop]}>
         <div css={styles.liveMatch}>
-          <MatchSlider matches={matches}/>
+          {
+            matches ? (
+              <MatchSlider matches={matches}/>
+            ) : (
+              <Headline variant='h2' css={tw`p-4 text-center text-white`}>
+                No live matches was found
+              </Headline>
+            )
+          }
         </div>
         <div css={styles.description}>
           <Headline variant='h2' css={tw`mb-2`}>
