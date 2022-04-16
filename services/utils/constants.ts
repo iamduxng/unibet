@@ -1,1 +1,1 @@
-export const SPORTS = ['footbacl', 'tennis', 'basketball']
+export const SPORTS = ['football', 'tennis', 'basketball']

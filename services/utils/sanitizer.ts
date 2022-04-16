@@ -1,6 +1,6 @@
 const pickMatches = (data: any) => {
   return {
-    liveEvents: (data.liveEvents || []).slice(0, 5)
+    liveEvents: (data.liveEvents || []).slice(0, 10)
   }
 }
 
