@@ -3,13 +3,6 @@ import { SPORTS } from '@/services/utils/constants'
 import { Headline, Icon, ALink, Button } from '@/components/common'
 import dayjs from '@/plugins/dayjs'
 
-const styles = {
-  slide: tw`p-6 flex flex-col items-center justify-center`,
-  slideCurrentScore: tw`text-yellow-500 mb-2`,
-  slideTeamsPlaying: tw`text-white flex justify-center items-center mb-2`,
-  slideTime: tw`flex mb-4 text-gray-500`,
-}
-
 interface MatchProps {
   match: any,
 }
@@ -38,17 +31,17 @@ const MatchSlideItem = ({ match }: MatchProps) => {
   }
 
   return (
-    <div css={styles.slide}>
-      <Headline variant='h1' css={styles.slideCurrentScore}>
+    <div css={tw`p-6 flex flex-col items-center justify-center`}>
+      <Headline variant='h1' css={tw`text-yellow-500 mb-2`}>
         {currentScore}
       </Headline>
-      <Headline variant='h2' css={styles.slideTeamsPlaying}>
+      <Headline variant='h2' css={tw`text-white flex justify-center items-center mb-2`}>
         <div css={tw`mr-2`}>
           <Icon name={getSportIcon()} />
         </div>
         <span>{teamPlaying}</span>
       </Headline>
-      <div css={styles.slideTime}>
+      <div css={tw`flex mb-4 text-gray-500`}>
         {getStartTime()}
       </div>
       <ALink href={`https://www.unibet.com/betting#/event/live/${eventID}`} target="_blank">

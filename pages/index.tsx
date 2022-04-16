@@ -3,14 +3,6 @@ import fetchMatches from '@/services/queries/matches'
 import LayoutDefault from '@/layouts/default'
 import { Headline, Card } from '@/components/common'
 import MatchSlider from '@/components/match/MatchSlider'
-
-const styles = {
-  cardBody: tw`grid gap-4 divide-y divide-gray-400`,
-  cardBodyDesktop: tw`md:grid-rows-1 md:grid-cols-3 md:divide-x md:divide-y-0`,
-  liveMatch: tw`flex flex-col justify-center bg-gray-1000 overflow-hidden row-auto md:col-span-2`,
-  description: tw`pt-4 md:pl-4 md:pt-0`,
-}
-
 interface HomeProps {
   matches: Array<any>
 }
@@ -19,15 +11,20 @@ const Home = ({ matches }: HomeProps) => {
   return (
     <Card>
       <div>
-        <Headline variant='h1' css={tw`mb-4`}>
+        <Headline variant='h1' css={tw`mb-4`} data-testid="home-headline">
           Live matches
         </Headline>
         <div css={tw`mb-4`}>
           Here is a list of matches that are live right now.
         </div>
       </div>
-      <div css={[styles.cardBody, styles.cardBodyDesktop]}>
-        <div css={styles.liveMatch}>
+      <div css={[
+        tw`grid gap-4 divide-y divide-gray-400`,
+        tw`md:grid-rows-1 md:grid-cols-3 md:divide-x md:divide-y-0`
+      ]}>
+        <div css={
+          tw`flex flex-col justify-center bg-gray-1000 overflow-hidden row-auto md:col-span-2`
+        }>
           {
             matches ? (
               <MatchSlider matches={matches}/>
@@ -38,7 +35,7 @@ const Home = ({ matches }: HomeProps) => {
             )
           }
         </div>
-        <div css={styles.description}>
+        <div css={tw`pt-4 md:pl-4 md:pt-0`}>
           <Headline variant='h2' css={tw`mb-2`}>
             Live betting
           </Headline>
