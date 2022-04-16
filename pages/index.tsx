@@ -65,7 +65,16 @@ Home.getLayout = (page: any) => {
 // This function runs only on the server side
 export const getStaticProps = async () => {
   const matches = await fetchMatches()
-  return { props: { matches } }
+  return {
+    props: {
+      matches
+    },
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every 2 minutes
+    revalidate: 120, // In seconds
+
+  }
 }
 
 export default Home

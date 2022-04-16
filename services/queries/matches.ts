@@ -2,6 +2,9 @@ import axios from "axios"
 import { toJson } from "@/services/utils/helper"
 import sanitizer from "@/services/utils/sanitizer"
 
+/** Method 1: Fetch data on server side
+* This does not work on caching because localStorage is undefined
+**/
 const fetchMatches = async () => {
   try {
     const { data } = await axios.get(
